@@ -35,7 +35,7 @@ function startGame() {
 function createCardElement(card) {
     const cardElement = document.createElement('div');
     cardElement.className = 'card';
-    cardElement.textContent = `${card.value} of ${card.suit}`;
+    cardElement.style.backgroundImage = `url('cards/${card.value}_of_${card.suit}.png')`;
     return cardElement;
 }
 
@@ -54,4 +54,14 @@ function updateUI() {
     });
 }
 
-document.getElementById('deal-button').addEventListener('click', startGame);
+document.getElementById('hit-button').addEventListener('click', () => {
+    playerCards.push(dealCard());
+    updateUI();
+});
+
+document.getElementById('stand-button').addEventListener('click', () => {
+    // Add logic for the dealer's turn and checking the game result
+    updateUI();
+});
+
+startGame(); // Automatically start the game

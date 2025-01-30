@@ -7,30 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game">
-        <h1>Blackjack</h1>
-        <div id="money">Money: $500</div>
-        <div id="bets">
-            <button class="bet-button" data-bet="50">$50</button>
-            <button class="bet-button" data-bet="100">$100</button>
-            <button class="bet-button" data-bet="200">$200</button>
-            <button class="bet-button" data-bet="all">All In</button>
+    <div class="container">
+        <h1>Blackjack Game</h1>
+        <div id="game">
+            <div id="player-hand" class="hand"></div>
+            <div id="dealer-hand" class="hand"></div>
+            <div id="controls">
+                <button id="hit-button">Hit</button>
+                <button id="stand-button">Stand</button>
+                <button id="reset-button">Reset</button>
+                <div id="bet-controls">
+                    <input type="number" id="bet-amount" placeholder="Enter bet amount">
+                    <button id="place-bet">Place Bet</button>
+                </div>
+                <div id="message"></div>
+            </div>
         </div>
-        <div id="dealer">
-            <h2>Dealer</h2>
-            <div id="dealer-cards" class="card-container"></div>
-            <div id="dealer-total"></div>
-        </div>
-        <div id="player">
-            <h2>You</h2>
-            <div id="player-cards" class="card-container"></div>
-            <div id="player-total"></div>
-        </div>
-        <div id="buttons">
-            <button id="hit-button">Hit</button>
-            <button id="stand-button">Stand</button>
-        </div>
-        <div id="message"></div>
     </div>
     <script src="script.js"></script>
 </body>

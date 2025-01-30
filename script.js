@@ -1,31 +1,47 @@
-let deck = [];
-const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
-const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
-function createDeck() {
-    deck = [];
-    for (let suit of suits) {
-        for (let value of values) {
-            deck.push({ value, suit });
-        }
-    }
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
 }
 
-function shuffleDeck() {
-    for (let i = deck.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
+#game {
+    text-align: center;
 }
 
-function dealCard() {
-    return deck.pop();
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-function startGame() {
-    createDeck();
-    shuffleDeck();
-    // Add more game initialization logic here
+button:hover {
+    background-color: #444;
 }
 
-document.getElementById('deal-button').addEventListener('click', startGame);
+#dealer-cards, #player-cards {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.card {
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+}

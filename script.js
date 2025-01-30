@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let card of hand) {
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
-            cardDiv.textContent = `${card.value} of ${card.suit}`;
+            cardDiv.style.backgroundImage = `url(images/${card.value}_of_${card.suit}.png)`;
             element.appendChild(cardDiv);
         }
     }
@@ -79,63 +79,3 @@ document.addEventListener('DOMContentLoaded', () => {
         playerCards = [];
         dealerCards = [];
         betAmount = 0;
-        betAmountInput.value = '';
-        displayCards(playerCards, playerHand);
-        displayCards(dealerCards, dealerHand);
-        updateMessage('Place your bet!');
-    }
-
-    hitButton.addEventListener('click', () => {
-        if (betAmount === 0) {
-            updateMessage('Please place a bet first!');
-            return;
-        }
-        drawCard(playerCards);
-        displayCards(playerCards, playerHand);
-        const playerValue = calculateHandValue(playerCards);
-        if (playerValue > 21) {
-            updateMessage('You busted! Dealer wins.');
-        }
-    });
-
-    standButton.addEventListener('click', () => {
-        if (betAmount === 0) {
-            updateMessage('Please place a bet first!');
-            return;
-        }
-        let dealerValue = calculateHandValue(dealerCards);
-        while (dealerValue < 17) {
-            drawCard(dealerCards);
-            dealerValue = calculateHandValue(dealerCards);
-        }
-        displayCards(dealerCards, dealerHand);
-        const playerValue = calculateHandValue(playerCards);
-        if (dealerValue > 21 || playerValue > dealerValue) {
-            updateMessage('You win!');
-        } else if (playerValue < dealerValue) {
-            updateMessage('Dealer wins!');
-        } else {
-            updateMessage('It\'s a tie!');
-        }
-    });
-
-    resetButton.addEventListener('click', resetGame);
-
-    placeBetButton.addEventListener('click', () => {
-        const amount = parseInt(betAmountInput.value);
-        if (amount > playerMoney || amount <= 0) {
-            updateMessage('Invalid bet amount!');
-            return;
-        }
-        betAmount = amount;
-        playerMoney -= betAmount;
-        updateMessage('Bet placed! Hit or Stand?');
-        drawCard(playerCards);
-        drawCard(playerCards);
-        drawCard(dealerCards);
-        displayCards(playerCards, playerHand);
-        displayCards(dealerCards, dealerHand);
-    });
-
-    resetGame();
-});

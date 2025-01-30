@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Press Start 2P', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+    background-color: #006400;
+    background-image: url('https://www.transparenttextures.com/patterns/green-fibers.png');
+    color: #FFF8DC;
     margin: 0;
 }
 
@@ -15,16 +18,17 @@ body {
 
 button {
     margin: 10px;
-    padding: 10px;
-    background-color: #333;
-    color: #e0e0e0;
-    border: 1px solid #444;
+    padding: 15px;
+    background-color: #8B4513;
+    color: #FFF8DC;
+    border: 2px solid #A0522D;
     cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
 }
 
 button:hover {
-    background-color: #444;
+    background-color: #A0522D;
 }
 
 #dealer-cards, #player-cards {
@@ -34,14 +38,14 @@ button:hover {
 }
 
 .card {
-    background-color: #f8f8f8;
-    color: #333;
+    background-color: #FFF8DC;
+    color: #8B4513;
     padding: 10px;
     margin: 5px;
-    border: 1px solid #444;
+    border: 2px solid #A0522D;
     border-radius: 5px;
     width: 80px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'Press Start 2P', cursive;
 }

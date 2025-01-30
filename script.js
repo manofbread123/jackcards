@@ -1,23 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const playerHand = document.getElementById('player-hand');
-    const dealerHand = document.getElementById('dealer-hand');
-    const message = document.getElementById('message');
-    const hitButton = document.getElementById('hit-button');
-    const standButton = document.getElementById('stand-button');
-    const resetButton = document.getElementById('reset-button');
-    const betAmountInput = document.getElementById('bet-amount');
-    const placeBetButton = document.getElementById('place-bet');
 
-    let deck = [];
-    let playerCards = [];
-    let dealerCards = [];
-    let playerMoney = 1000;
-    let betAmount = 0;
-
-    const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
-    const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
-
-    const cardImages = {
         'ace_of_hearts': 'https://via.placeholder.com/100x150.png?text=Ace+of+Hearts',
         '2_of_hearts': 'https://via.placeholder.com/100x150.png?text=2+of+Hearts',
         '3_of_hearts': 'https://via.placeholder.com/100x150.png?text=3+of+Hearts',

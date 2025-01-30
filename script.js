@@ -1,47 +1,57 @@
-body {
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-    margin: 0;
+let deck = [];
+const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+let dealerCards = [];
+let playerCards = [];
+
+function createDeck() {
+    deck = [];
+    for (let suit of suits) {
+        for (let value of values) {
+            deck.push({ value, suit });
+        }
+    }
 }
 
-#game {
-    text-align: center;
+function shuffleDeck() {
+    for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
 }
 
-button {
-    margin: 10px;
-    padding: 10px;
-    background-color: #333;
-    color: #e0e0e0;
-    border: 1px solid #444;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
+function dealCard() {
+    return deck.pop();
 }
 
-button:hover {
-    background-color: #444;
+function startGame() {
+    createDeck();
+    shuffleDeck();
+    dealerCards = [dealCard(), dealCard()];
+    playerCards = [dealCard(), dealCard()];
+    updateUI();
 }
 
-#dealer-cards, #player-cards {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
+function createCardElement(card) {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'card';
+    cardElement.textContent = `${card.value} of ${card.suit}`;
+    return cardElement;
 }
 
-.card {
-    background-color: #f8f8f8;
-    color: #333;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    width: 80px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-family: 'Courier New', Courier, monospace;
+function updateUI() {
+    const dealerCardsContainer = document.getElementById('dealer-cards');
+    const playerCardsContainer = document.getElementById('player-cards');
+    dealerCardsContainer.innerHTML = '';
+    playerCardsContainer.innerHTML = '';
+    dealerCards.forEach(card => {
+        const cardElement = createCardElement(card);
+        dealerCardsContainer.appendChild(cardElement);
+    });
+    playerCards.forEach(card => {
+        const cardElement = createCardElement(card);
+        playerCardsContainer.appendChild(cardElement);
+    });
 }
+
+document.getElementById('deal-button').addEventListener('click', startGame);
